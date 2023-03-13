@@ -1,9 +1,9 @@
 services:
   rabbitMq:
     image: rabbitmq:3.8-management-alpine
-    container_name: 'rabbitmq'
+    container_name: 'rabbitMq'
     ports: 
-      - 5673:5672
+      - 5672:5672
       - 15673:15672
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
@@ -21,6 +21,7 @@ services:
     environment:
       NODE_ENV: local
       AMQP_URL: amqp://guest:guest@rabbitmq:5672
+      EXCHANGE_NAME: logExchange
     networks:
       - rabbitmq_nodejs
 networks:
